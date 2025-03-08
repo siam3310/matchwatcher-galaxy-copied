@@ -1,0 +1,167 @@
+
+{
+  "matches": [
+    {
+      "id": "match001",
+      "teams": {
+        "teamA": "India",
+        "teamB": "Australia",
+        "teamALogo": "",
+        "teamBLogo": ""
+      },
+      "tournament": "ICC World Cup 2025",
+      "venue": "Melbourne Cricket Ground, Australia",
+      "startTime": "03/15/2025 10:00",
+      "endTime": "03/15/2025 18:00",
+      "sources": [
+        {
+          "id": "source001",
+          "name": "HD Stream",
+          "url": "https://example.com/stream1",
+          "type": "video",
+          "quality": "HD"
+        },
+        {
+          "id": "source002",
+          "name": "SD Stream",
+          "url": "https://example.com/stream2",
+          "type": "video",
+          "quality": "SD"
+        },
+        {
+          "id": "source003",
+          "name": "YouTube Stream",
+          "url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "type": "iframe"
+        }
+      ],
+      "additionalInfo": {
+        "matchType": "ODI",
+        "round": "Group Stage",
+        "description": "A crucial match between two cricket giants in the ICC World Cup 2025 group stage."
+      }
+    },
+    {
+      "id": "match002",
+      "teams": {
+        "teamA": "England",
+        "teamB": "South Africa",
+        "teamALogo": "",
+        "teamBLogo": ""
+      },
+      "tournament": "ICC World Cup 2025",
+      "venue": "Lords Cricket Ground, England",
+      "startTime": "03/10/2025 14:00",
+      "endTime": "03/10/2025 22:00",
+      "sources": [
+        {
+          "id": "source004",
+          "name": "HD Stream",
+          "url": "https://example.com/stream3",
+          "type": "video",
+          "quality": "HD"
+        },
+        {
+          "id": "source005",
+          "name": "Mobile Stream",
+          "url": "https://example.com/stream4",
+          "type": "video",
+          "quality": "Mobile"
+        }
+      ],
+      "additionalInfo": {
+        "matchType": "ODI",
+        "round": "Group Stage",
+        "description": "England vs South Africa in an important World Cup match."
+      }
+    },
+    {
+      "id": "match003",
+      "teams": {
+        "teamA": "Pakistan",
+        "teamB": "New Zealand",
+        "teamALogo": "",
+        "teamBLogo": ""
+      },
+      "tournament": "ICC World Cup 2025",
+      "venue": "Gaddafi Stadium, Pakistan",
+      "startTime": "01/01/2023 09:00",
+      "endTime": "01/01/2023 17:00",
+      "sources": [
+        {
+          "id": "source006",
+          "name": "HD Stream",
+          "url": "https://example.com/stream5",
+          "type": "video",
+          "quality": "HD"
+        }
+      ],
+      "additionalInfo": {
+        "matchType": "ODI",
+        "round": "Group Stage",
+        "description": "Pakistan takes on New Zealand in this exciting World Cup clash."
+      }
+    },
+    {
+      "id": "match004",
+      "teams": {
+        "teamA": "West Indies",
+        "teamB": "Sri Lanka",
+        "teamALogo": "",
+        "teamBLogo": ""
+      },
+      "tournament": "T20 Series 2025",
+      "venue": "Kensington Oval, Barbados",
+      "startTime": "03/20/2025 18:00",
+      "endTime": "03/20/2025 22:00",
+      "sources": [
+        {
+          "id": "source007",
+          "name": "HD Stream",
+          "url": "https://example.com/stream6",
+          "type": "video",
+          "quality": "HD"
+        },
+        {
+          "id": "source008",
+          "name": "SD Stream",
+          "url": "https://example.com/stream7",
+          "type": "video",
+          "quality": "SD"
+        }
+      ],
+      "additionalInfo": {
+        "matchType": "T20",
+        "round": "Match 1",
+        "description": "First T20 match of the series between West Indies and Sri Lanka."
+      }
+    },
+    {
+      "id": "match005",
+      "teams": {
+        "teamA": "Bangladesh",
+        "teamB": "Afghanistan",
+        "teamALogo": "",
+        "teamBLogo": ""
+      },
+      "tournament": "Asia Cup 2025",
+      "venue": "Shere Bangla National Stadium, Bangladesh",
+      "startTime": "03/18/2025 11:30",
+      "endTime": "03/18/2025 19:30",
+      "sources": [
+        {
+          "id": "source009",
+          "name": "HD Stream",
+          "url": "https://example.com/stream8",
+          "type": "video",
+          "quality": "HD"
+        }
+      ],
+      "additionalInfo": {
+        "matchType": "ODI",
+        "round": "Group Stage",
+        "description": "Bangladesh vs Afghanistan in an important Asia Cup fixture."
+      }
+    }
+  ]
+}
