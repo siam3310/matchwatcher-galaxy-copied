@@ -70,7 +70,10 @@ const MatchCard = ({ match }: MatchCardProps) => {
           {/* Status badge */}
           <div className="mb-3">
             {status === 'live' ? (
-              <Badge className="bg-cricliv-blue text-white animate-pulse">LIVE NOW</Badge>
+              <Badge className="bg-cricket-ball text-white animate-pulse flex items-center gap-1">
+                <span className="h-2 w-2 rounded-full bg-white animate-pulse"></span>
+                LIVE NOW
+              </Badge>
             ) : (
               <Badge variant="outline" className="text-cricliv-blue border-cricliv-blue">UPCOMING</Badge>
             )}
@@ -108,7 +111,7 @@ const MatchCard = ({ match }: MatchCardProps) => {
             
             <Button 
               variant={status === 'live' ? "default" : "outline"} 
-              className={status === 'live' ? "w-full bg-cricliv-blue hover:bg-cricliv-blue/90" : "w-full border-cricliv-blue text-cricliv-blue hover:bg-cricliv-blue/10"}
+              className={status === 'live' ? "w-full bg-cricket-ball hover:bg-cricket-ball/90" : "w-full border-cricliv-blue text-cricliv-blue hover:bg-cricliv-blue/10"}
             >
               {status === 'live' ? 'Watch Now' : 'View Details'}
             </Button>

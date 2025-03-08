@@ -28,6 +28,12 @@ const MainLayout = ({ children }: MainLayoutProps) => {
       </main>
       <footer className="bg-white py-6 border-t">
         <div className="container mx-auto px-4 text-center">
+          <div className="mb-4">
+            <span className="text-xl font-bold">
+              <span className="text-cricliv-purple">CRIC</span>
+              <span className="text-cricliv-blue">LIV</span>
+            </span>
+          </div>
           <p className="text-muted-foreground">&copy; {new Date().getFullYear()} CRICLIV - Free Cricket Streaming</p>
           <p className="text-sm text-muted-foreground mt-2">All streams are provided as-is and we do not host any content.</p>
         </div>

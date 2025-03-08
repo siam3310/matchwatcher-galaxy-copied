@@ -81,6 +81,20 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-sans font-semibold;
   }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-cricliv-blue/50 rounded-full hover:bg-cricliv-blue/70;
+  }
 }
 
 @layer components {
@@ -89,7 +103,7 @@
   }
   
   .match-card-live {
-    @apply border-l-4 border-l-cricliv-blue;
+    @apply border-l-4 border-l-cricket-ball;
   }
   
   .match-card-upcoming {
@@ -102,5 +116,34 @@
 
   .glass-card {
     @apply bg-white/90 backdrop-blur-sm shadow-lg rounded-lg border border-cricliv-lightblue/50;
+  }
+  
+  .cricliv-logo {
+    @apply font-bold;
+  }
+  
+  .cricliv-logo .cric {
+    @apply text-cricliv-purple;
+  }
+  
+  .cricliv-logo .liv {
+    @apply text-cricliv-blue;
+  }
+  
+  /* Video player custom styles */
+  .video-player {
+    @apply bg-gradient-to-br from-cricliv-purple to-cricliv-blue/70 rounded-lg overflow-hidden;
+  }
+  
+  .custom-range {
+    @apply appearance-none h-1.5 rounded-full bg-white/30;
+  }
+  
+  .custom-range::-webkit-slider-thumb {
+    @apply appearance-none w-3 h-3 rounded-full bg-cricliv-blue cursor-pointer;
+  }
+  
+  .player-button {
+    @apply bg-black/30 hover:bg-black/50 text-white rounded-full transition-all;
   }
 }

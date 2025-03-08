@@ -61,7 +61,9 @@ export default {
 				cricliv: {
 					'blue': '#33C3F0', 
 					'lightblue': '#D3E4FD',
-					'lightgray': '#F1F1F1'
+					'lightgray': '#F1F1F1',
+					'green': '#4CAF50',  // New greenish color
+					'purple': '#9b87f5'  // New light purple color
 				}
 			},
 			borderRadius: {
@@ -105,6 +107,9 @@ export default {
 			fontFamily: {
 				sans: ['Source Sans Pro', 'ui-sans-serif', 'system-ui'],
 				body: ['Roboto', 'ui-sans-serif', 'system-ui']
+			},
+			backgroundImage: {
+				'gradient-cric': 'linear-gradient(90deg, #33C3F0, #9b87f5)'
 			}
 		}
 	},
