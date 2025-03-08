@@ -14,8 +14,8 @@ const MatchStream = ({ match }: MatchStreamProps) => {
   return (
     <div className="space-y-6">
       <div className="bg-white rounded-lg overflow-hidden shadow-md">
-        {/* Video Player */}
-        <div className="aspect-video relative bg-black flex items-center justify-center">
+        {/* Video Player - Full Width */}
+        <div className="aspect-video w-full bg-black">
           <CustomVideoPlayer sources={match.sources} />
         </div>
         

@@ -17,14 +17,14 @@
         {
           "id": "source001",
           "name": "HD Stream",
-          "url": "https://example.com/stream1",
+          "url": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
           "type": "video",
           "quality": "HD"
         },
         {
           "id": "source002",
           "name": "SD Stream",
-          "url": "https://example.com/stream2",
+          "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
           "type": "video",
           "quality": "SD"
         },
@@ -57,16 +57,22 @@
         {
           "id": "source004",
           "name": "HD Stream",
-          "url": "https://example.com/stream3",
+          "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
           "type": "video",
           "quality": "HD"
         },
         {
           "id": "source005",
           "name": "Mobile Stream",
-          "url": "https://example.com/stream4",
+          "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
           "type": "video",
           "quality": "Mobile"
+        },
+        {
+          "id": "source006",
+          "name": "YouTube Stream",
+          "url": "https://www.youtube.com/embed/aqz-KE-bpKQ",
+          "type": "iframe"
         }
       ],
       "additionalInfo": {
@@ -89,11 +95,18 @@
       "endTime": "03/15/2025 17:00",
       "sources": [
         {
-          "id": "source006",
+          "id": "source007",
           "name": "HD Stream",
-          "url": "https://example.com/stream5",
+          "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
           "type": "video",
           "quality": "HD"
+        },
+        {
+          "id": "source008",
+          "name": "SD Stream",
+          "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+          "type": "video",
+          "quality": "SD"
         }
       ],
       "additionalInfo": {
@@ -116,16 +129,16 @@
       "endTime": "03/20/2025 22:00",
       "sources": [
         {
-          "id": "source007",
+          "id": "source009",
           "name": "HD Stream",
-          "url": "https://example.com/stream6",
+          "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
           "type": "video",
           "quality": "HD"
         },
         {
-          "id": "source008",
+          "id": "source010",
           "name": "SD Stream",
-          "url": "https://example.com/stream7",
+          "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
           "type": "video",
           "quality": "SD"
         }
@@ -150,17 +163,110 @@
       "endTime": "03/18/2025 19:30",
       "sources": [
         {
-          "id": "source009",
-          "name": "HD Stream",
-          "url": "https://example.com/stream8",
+          "id": "source011",
+          "name": "HD Video",
+          "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
           "type": "video",
           "quality": "HD"
+        },
+        {
+          "id": "source012",
+          "name": "SD Video",
+          "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+          "type": "video",
+          "quality": "SD"
+        },
+        {
+          "id": "source013",
+          "name": "YouTube Stream 1",
+          "url": "https://www.youtube.com/embed/aqz-KE-bpKQ",
+          "type": "iframe"
+        },
+        {
+          "id": "source014",
+          "name": "YouTube Stream 2",
+          "url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "type": "iframe"
         }
       ],
       "additionalInfo": {
         "matchType": "ODI",
         "round": "Group Stage",
         "description": "Bangladesh vs Afghanistan in an important Asia Cup fixture."
+      }
+    },
+    {
+      "id": "match006",
+      "teams": {
+        "teamA": "India",
+        "teamB": "Pakistan",
+        "teamALogo": "",
+        "teamBLogo": ""
+      },
+      "tournament": "Asia Cup 2025",
+      "venue": "Dubai International Cricket Stadium, UAE",
+      "startTime": "04/05/2025 14:00",
+      "endTime": "04/05/2025 22:00",
+      "sources": [
+        {
+          "id": "source015",
+          "name": "4K Stream",
+          "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
+          "type": "video",
+          "quality": "HD"
+        },
+        {
+          "id": "source016",
+          "name": "HD Stream",
+          "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+          "type": "video",
+          "quality": "HD"
+        },
+        {
+          "id": "source017",
+          "name": "YouTube Official",
+          "url": "https://www.youtube.com/embed/aqz-KE-bpKQ",
+          "type": "iframe"
+        }
+      ],
+      "additionalInfo": {
+        "matchType": "ODI",
+        "round": "Super 4",
+        "description": "The highly anticipated India vs Pakistan clash in the Asia Cup 2025."
+      }
+    },
+    {
+      "id": "match007",
+      "teams": {
+        "teamA": "Australia",
+        "teamB": "England",
+        "teamALogo": "",
+        "teamBLogo": ""
+      },
+      "tournament": "The Ashes 2025",
+      "venue": "Lords Cricket Ground, England",
+      "startTime": "05/10/2025 11:00",
+      "endTime": "05/14/2025 18:00",
+      "sources": [
+        {
+          "id": "source018",
+          "name": "Official HD",
+          "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
+          "type": "video",
+          "quality": "HD"
+        },
+        {
+          "id": "source019",
+          "name": "Alternative Feed",
+          "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+          "type": "video",
+          "quality": "HD"
+        }
+      ],
+      "additionalInfo": {
+        "matchType": "Test",
+        "round": "1st Test",
+        "description": "First test of The Ashes series between Australia and England."
       }
     }
   ]

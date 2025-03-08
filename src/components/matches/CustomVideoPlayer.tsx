@@ -156,13 +156,13 @@ const CustomVideoPlayer = ({ sources, initialSourceId }: CustomVideoPlayerProps)
   // If no sources are available
   if (sources.length === 0) {
     return (
-      <div className="aspect-video bg-gradient-to-r from-cricliv-purple to-cricliv-green/80 flex items-center justify-center text-white">
+      <div className="w-full aspect-video bg-gradient-to-r from-cricliv-purple to-cricliv-green/80 flex items-center justify-center text-white">
         No video sources available
       </div>
     );
   }
 
-  // Source selector component (moved to top-left)
+  // Source selector component
   const SourceSelector = () => (
     <div className="absolute top-4 left-4 z-20">
       <DropdownMenu>
@@ -190,7 +190,7 @@ const CustomVideoPlayer = ({ sources, initialSourceId }: CustomVideoPlayerProps)
   // If source is iframe type
   if (activeSource.type === 'iframe') {
     return (
-      <div className="aspect-video bg-black relative">
+      <div className="w-full aspect-video bg-black relative">
         <iframe
           src={activeSource.url}
           className="w-full h-full"
@@ -202,18 +202,19 @@ const CustomVideoPlayer = ({ sources, initialSourceId }: CustomVideoPlayerProps)
     );
   }
 
-  // For video type sources - matching the design in the image
+  // For video type sources
   return (
     <div 
       ref={containerRef} 
-      className="aspect-video bg-black relative group cursor-pointer overflow-hidden"
+      className="w-full aspect-video bg-black relative group cursor-pointer overflow-hidden"
       onClick={togglePlay}
       onMouseMove={handleMouseMove}
     >
       <video
         ref={videoRef}
         src={activeSource.url}
-        className="w-full h-full"
+        className="w-full h-full object-contain"
+        preload="metadata"
       />
 
       {/* Source Selector - Always visible */}
@@ -283,7 +284,7 @@ const CustomVideoPlayer = ({ sources, initialSourceId }: CustomVideoPlayerProps)
         </Button>
       </div>
 
-      {/* Video Controls - New design matching the image */}
+      {/* Video Controls */}
       <div 
         className={`absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 transition-opacity duration-300 ${
           showControls ? 'opacity-100' : 'opacity-0'
@@ -293,17 +294,21 @@ const CustomVideoPlayer = ({ sources, initialSourceId }: CustomVideoPlayerProps)
         {/* Progress bar */}
         <div 
           ref={progressBarRef}
-          className="relative h-1 bg-white/30 rounded-full cursor-pointer mb-3"
+          className="relative h-1.5 bg-white/30 rounded-full cursor-pointer mb-4"
           onClick={handleProgressBarClick}
         >
           <div 
             className="absolute top-0 left-0 h-full bg-cricliv-blue rounded-full"
             style={{ width: `${(currentTime / (duration || 1)) * 100}%` }}
           ></div>
+          <div 
+            className="absolute top-0 h-3 w-3 rounded-full bg-cricliv-blue -mt-0.5 transform -translate-x-1/2"
+            style={{ left: `${(currentTime / (duration || 1)) * 100}%` }}
+          ></div>
         </div>
 
         <div className="flex justify-between items-center">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <Button
               variant="ghost"
               size="icon"
@@ -322,7 +327,7 @@ const CustomVideoPlayer = ({ sources, initialSourceId }: CustomVideoPlayerProps)
               {isMuted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
             </Button>
 
-            <div className="w-20 hidden sm:block">
+            <div className="w-24 hidden sm:block">
               <input
                 type="range"
                 min="0"
@@ -330,10 +335,7 @@ const CustomVideoPlayer = ({ sources, initialSourceId }: CustomVideoPlayerProps)
                 step="0.1"
                 value={volume}
                 onChange={handleVolumeChange}
-                className="h-1 bg-white/30 rounded-full appearance-none cursor-pointer"
-                style={{
-                  background: `linear-gradient(to right, #33C3F0 ${volume * 100}%, rgba(255,255,255,0.3) ${volume * 100}%)`,
-                }}
+                className="w-full h-1.5 bg-white/30 rounded-full appearance-none cursor-pointer custom-range"
               />
             </div>
 
@@ -343,9 +345,6 @@ const CustomVideoPlayer = ({ sources, initialSourceId }: CustomVideoPlayerProps)
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="text-white text-xs sm:text-sm mr-2">
-              {activeSource.name}
-            </span>
             <Button
               variant="ghost"
               size="icon"
