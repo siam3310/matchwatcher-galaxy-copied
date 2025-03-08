@@ -16,24 +16,24 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 142 77% 22%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 195 80% 57%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 195 80% 95%;
+    --secondary-foreground: 195 80% 25%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 195 80% 95%;
+    --accent-foreground: 195 80% 25%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 142 77% 22%;
+    --ring: 195 80% 57%;
 
     --radius: 0.5rem;
   }
@@ -48,8 +48,8 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 142 64% 30%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 195 80% 57%;
+    --primary-foreground: 0 0% 100%;
 
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
@@ -65,7 +65,7 @@
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 142 64% 30%;
+    --ring: 195 80% 57%;
   }
 }
 
@@ -85,18 +85,22 @@
 
 @layer components {
   .match-card {
-    @apply bg-card rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-border;
+    @apply bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-border;
   }
   
   .match-card-live {
-    @apply border-l-4 border-l-cricket-ball;
+    @apply border-l-4 border-l-cricliv-blue;
   }
   
   .match-card-upcoming {
-    @apply border-l-4 border-l-cricket-pitch;
+    @apply border-l-4 border-l-cricliv-lightblue;
   }
   
   .section-title {
     @apply text-2xl font-bold mb-4 text-foreground;
+  }
+
+  .glass-card {
+    @apply bg-white/90 backdrop-blur-sm shadow-lg rounded-lg border border-cricliv-lightblue/50;
   }
 }

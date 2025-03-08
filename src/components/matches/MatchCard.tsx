@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Clock, Star } from "lucide-react";
+import { Clock, Star, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
@@ -38,7 +38,10 @@ const MatchCard = ({ match }: MatchCardProps) => {
     setIsWatchlisted(isInWatchlist(match.id));
   }, [match.id]);
 
-  const handleWatchlistToggle = () => {
+  const handleWatchlistToggle = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
     if (isWatchlisted) {
       removeFromWatchlist(match.id);
       setIsWatchlisted(false);
@@ -61,52 +64,65 @@ const MatchCard = ({ match }: MatchCardProps) => {
   }
 
   return (
-    <div className={`match-card ${status === 'live' ? 'match-card-live' : 'match-card-upcoming'}`}>
-      <div className="p-4">
-        <div className="flex justify-between items-start mb-3">
-          <h3 className="font-semibold text-lg">{match.teams.teamA} vs {match.teams.teamB}</h3>
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={handleWatchlistToggle}
-            className={isWatchlisted ? "text-yellow-500" : "text-muted-foreground"}
-          >
-            <Star className="h-5 w-5" />
-          </Button>
-        </div>
-        
-        <div className="mb-3">
-          <p className="text-sm text-muted-foreground">{match.tournament}</p>
-          <p className="text-sm text-muted-foreground">{match.venue}</p>
-        </div>
-        
-        <div className="flex justify-between items-center">
-          <div>
+    <Link to={`/match/${match.id}`} className="block h-full">
+      <div className={`match-card ${status === 'live' ? 'match-card-live' : 'match-card-upcoming'} h-full flex flex-col`}>
+        <div className="p-4 flex flex-col h-full">
+          {/* Status badge */}
+          <div className="mb-3">
             {status === 'live' ? (
-              <Badge variant="destructive" className="animate-pulse">LIVE NOW</Badge>
+              <Badge className="bg-cricliv-blue text-white animate-pulse">LIVE NOW</Badge>
             ) : (
-              <div className="flex items-center space-x-1 text-sm text-muted-foreground">
-                <Clock className="h-4 w-4" />
-                <span>{formatDate(match.startTime)}</span>
-              </div>
+              <Badge variant="outline" className="text-cricliv-blue border-cricliv-blue">UPCOMING</Badge>
             )}
           </div>
           
-          <Link to={`/match/${match.id}`}>
-            <Button variant={status === 'live' ? "default" : "outline"} size="sm">
+          {/* Teams */}
+          <div className="flex justify-between items-start mb-4">
+            <h3 className="font-semibold text-lg flex-1">
+              {match.teams.teamA} <span className="text-muted-foreground">vs</span> {match.teams.teamB}
+            </h3>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={handleWatchlistToggle}
+              className={isWatchlisted ? "text-yellow-500" : "text-muted-foreground"}
+            >
+              <Star className="h-5 w-5" />
+            </Button>
+          </div>
+          
+          {/* Tournament & Venue */}
+          <div className="mb-3 flex-grow">
+            <p className="text-sm text-muted-foreground flex items-center gap-1">
+              <Users className="h-4 w-4" /> {match.tournament}
+            </p>
+            <p className="text-sm text-muted-foreground">{match.venue}</p>
+          </div>
+          
+          {/* Time & Action */}
+          <div className="mt-auto">
+            <div className="flex items-center space-x-1 text-sm text-muted-foreground mb-3">
+              <Clock className="h-4 w-4" />
+              <span>{formatDate(match.startTime)}</span>
+            </div>
+            
+            <Button 
+              variant={status === 'live' ? "default" : "outline"} 
+              className={status === 'live' ? "w-full bg-cricliv-blue hover:bg-cricliv-blue/90" : "w-full border-cricliv-blue text-cricliv-blue hover:bg-cricliv-blue/10"}
+            >
               {status === 'live' ? 'Watch Now' : 'View Details'}
             </Button>
-          </Link>
-        </div>
-        
-        {status === 'upcoming' && (
-          <div className="mt-3 pt-3 border-t text-sm text-center">
-            <span className="text-muted-foreground">Starts in: </span>
-            <span className="font-medium">{timeUntil}</span>
+            
+            {status === 'upcoming' && (
+              <div className="mt-3 pt-3 border-t text-sm text-center">
+                <span className="text-muted-foreground">Starts in: </span>
+                <span className="font-medium">{timeUntil}</span>
+              </div>
+            )}
           </div>
-        )}
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

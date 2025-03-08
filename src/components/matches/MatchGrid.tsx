@@ -10,14 +10,14 @@ interface MatchGridProps {
 const MatchGrid = ({ matches, emptyMessage = "No matches found" }: MatchGridProps) => {
   if (matches.length === 0) {
     return (
-      <div className="text-center py-12">
+      <div className="text-center py-12 bg-white rounded-lg shadow border">
         <p className="text-muted-foreground">{emptyMessage}</p>
       </div>
     );
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
       {matches.map((match) => (
         <MatchCard key={match.id} match={match} />
       ))}

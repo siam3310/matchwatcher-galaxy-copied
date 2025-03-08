@@ -58,6 +58,11 @@ export default {
 					'ball': '#B71C1C',
 					'bat': '#8B4513'
 				},
+				cricliv: {
+					'blue': '#33C3F0', 
+					'lightblue': '#D3E4FD',
+					'lightgray': '#F1F1F1'
+				}
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

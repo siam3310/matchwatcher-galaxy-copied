@@ -21,20 +21,17 @@ const MainLayout = ({ children }: MainLayoutProps) => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-cricliv-lightgray/30 text-foreground">
       <Navbar />
-      <main className="container mx-auto py-6 px-4">
+      <main className="container mx-auto py-6 px-4 md:py-8">
         {children}
       </main>
-      <footer className="bg-card py-6 border-t">
+      <footer className="bg-white py-6 border-t">
         <div className="container mx-auto px-4 text-center">
-          <p className="text-muted-foreground">&copy; {new Date().getFullYear()} Cricket Match Streams</p>
+          <p className="text-muted-foreground">&copy; {new Date().getFullYear()} CRICLIV - Free Cricket Streaming</p>
           <p className="text-sm text-muted-foreground mt-2">All streams are provided as-is and we do not host any content.</p>
         </div>
       </footer>
-      <div className="fixed bottom-4 right-4">
-        <ModeToggle />
-      </div>
       <Toaster />
     </div>
   );
