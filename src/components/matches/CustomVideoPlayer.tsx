@@ -26,6 +26,7 @@ const CustomVideoPlayer = ({ sources, initialSourceId }: CustomVideoPlayerProps)
   const [controlsTimeout, setControlsTimeout] = useState<NodeJS.Timeout | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const progressBarRef = useRef<HTMLDivElement>(null);
 
   const activeSource = sources.find(source => source.id === activeSourceId) || sources[0];
 
@@ -106,13 +107,14 @@ const CustomVideoPlayer = ({ sources, initialSourceId }: CustomVideoPlayerProps)
     setIsMuted(value === 0);
   };
 
-  const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = parseFloat(e.target.value);
+  const handleProgressBarClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    const progressBar = progressBarRef.current;
     const video = videoRef.current;
-    if (!video) return;
-
-    video.currentTime = value;
-    setCurrentTime(value);
+    if (!progressBar || !video) return;
+    
+    const rect = progressBar.getBoundingClientRect();
+    const clickPosition = (e.clientX - rect.left) / rect.width;
+    video.currentTime = clickPosition * video.duration;
   };
 
   const handleSourceChange = (sourceId: string) => {
@@ -165,17 +167,17 @@ const CustomVideoPlayer = ({ sources, initialSourceId }: CustomVideoPlayerProps)
     <div className="absolute top-4 left-4 z-20">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="outline" size="sm" className="bg-black/70 text-white hover:bg-black/90 border-cricliv-purple/50">
-            <Settings className="h-4 w-4 mr-2 text-cricliv-purple" />
+          <Button variant="outline" size="sm" className="bg-black/70 text-white hover:bg-black/90 border-none">
+            <Settings className="h-4 w-4 mr-2 text-cricliv-blue" />
             {activeSource.name} {activeSource.quality ? `(${activeSource.quality})` : ''}
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="start" className="bg-black/90 border-cricliv-purple/30">
+        <DropdownMenuContent align="start" className="bg-black/90 border-none">
           {sources.map((source) => (
             <DropdownMenuItem
               key={source.id}
               onClick={() => handleSourceChange(source.id)}
-              className={`${source.id === activeSourceId ? "bg-cricliv-purple/20 text-cricliv-purple" : "text-white"} hover:bg-white/10`}
+              className={`${source.id === activeSourceId ? "bg-cricliv-blue/20 text-cricliv-blue" : "text-white"} hover:bg-white/10`}
             >
               {source.name} {source.quality ? `(${source.quality})` : ''}
             </DropdownMenuItem>
@@ -200,7 +202,7 @@ const CustomVideoPlayer = ({ sources, initialSourceId }: CustomVideoPlayerProps)
     );
   }
 
-  // For video type sources
+  // For video type sources - matching the design in the image
   return (
     <div 
       ref={containerRef} 
@@ -216,6 +218,14 @@ const CustomVideoPlayer = ({ sources, initialSourceId }: CustomVideoPlayerProps)
 
       {/* Source Selector - Always visible */}
       {sources.length > 1 && <SourceSelector />}
+
+      {/* Live indicator in the top-right corner if the match is live */}
+      <div className="absolute top-4 right-4 z-20">
+        <div className="bg-cricket-ball/90 text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
+          <span className="h-2 w-2 rounded-full bg-white animate-pulse"></span>
+          LIVE
+        </div>
+      </div>
 
       {/* Center Play/Pause Button - Visible on hover or pause */}
       <div 
@@ -273,7 +283,7 @@ const CustomVideoPlayer = ({ sources, initialSourceId }: CustomVideoPlayerProps)
         </Button>
       </div>
 
-      {/* Video Controls */}
+      {/* Video Controls - New design matching the image */}
       <div 
         className={`absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 transition-opacity duration-300 ${
           showControls ? 'opacity-100' : 'opacity-0'
@@ -281,18 +291,15 @@ const CustomVideoPlayer = ({ sources, initialSourceId }: CustomVideoPlayerProps)
         onClick={(e) => e.stopPropagation()}
       >
         {/* Progress bar */}
-        <div className="flex items-center mb-2">
-          <input
-            type="range"
-            min="0"
-            max={duration || 100}
-            value={currentTime}
-            onChange={handleSeek}
-            className="w-full h-1.5 rounded-full appearance-none cursor-pointer"
-            style={{
-              background: `linear-gradient(to right, #33C3F0 ${(currentTime / (duration || 1)) * 100}%, rgba(255,255,255,0.3) ${(currentTime / (duration || 1)) * 100}%)`,
-            }}
-          />
+        <div 
+          ref={progressBarRef}
+          className="relative h-1 bg-white/30 rounded-full cursor-pointer mb-3"
+          onClick={handleProgressBarClick}
+        >
+          <div 
+            className="absolute top-0 left-0 h-full bg-cricliv-blue rounded-full"
+            style={{ width: `${(currentTime / (duration || 1)) * 100}%` }}
+          ></div>
         </div>
 
         <div className="flex justify-between items-center">
@@ -301,7 +308,7 @@ const CustomVideoPlayer = ({ sources, initialSourceId }: CustomVideoPlayerProps)
               variant="ghost"
               size="icon"
               onClick={togglePlay}
-              className="text-white hover:bg-white/20 p-1"
+              className="text-white hover:bg-white/10 p-1"
             >
               {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5" />}
             </Button>
@@ -310,7 +317,7 @@ const CustomVideoPlayer = ({ sources, initialSourceId }: CustomVideoPlayerProps)
               variant="ghost"
               size="icon"
               onClick={toggleMute}
-              className="text-white hover:bg-white/20 p-1"
+              className="text-white hover:bg-white/10 p-1"
             >
               {isMuted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
             </Button>
@@ -324,6 +331,9 @@ const CustomVideoPlayer = ({ sources, initialSourceId }: CustomVideoPlayerProps)
                 value={volume}
                 onChange={handleVolumeChange}
                 className="h-1 bg-white/30 rounded-full appearance-none cursor-pointer"
+                style={{
+                  background: `linear-gradient(to right, #33C3F0 ${volume * 100}%, rgba(255,255,255,0.3) ${volume * 100}%)`,
+                }}
               />
             </div>
 
@@ -333,11 +343,14 @@ const CustomVideoPlayer = ({ sources, initialSourceId }: CustomVideoPlayerProps)
           </div>
 
           <div className="flex items-center gap-2">
+            <span className="text-white text-xs sm:text-sm mr-2">
+              {activeSource.name}
+            </span>
             <Button
               variant="ghost"
               size="icon"
               onClick={toggleFullscreen}
-              className="text-white hover:bg-white/20 p-1"
+              className="text-white hover:bg-white/10 p-1"
             >
               <Maximize className="h-5 w-5" />
             </Button>

@@ -10,7 +10,7 @@ interface MatchGridProps {
 const MatchGrid = ({ matches, emptyMessage = "No matches found" }: MatchGridProps) => {
   if (matches.length === 0) {
     return (
-      <div className="text-center py-12 bg-white rounded-lg shadow border">
+      <div className="text-center py-12 glass-card">
         <p className="text-muted-foreground">{emptyMessage}</p>
       </div>
     );

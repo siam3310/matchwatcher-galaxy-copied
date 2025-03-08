@@ -67,15 +67,17 @@ const MatchCard = ({ match }: MatchCardProps) => {
     <Link to={`/match/${match.id}`} className="block h-full">
       <div className={`match-card ${status === 'live' ? 'match-card-live' : 'match-card-upcoming'} h-full flex flex-col`}>
         <div className="p-4 flex flex-col h-full">
-          {/* Status badge */}
+          {/* Status badge - Made non-clickable by removing any onClick and pointer events */}
           <div className="mb-3">
             {status === 'live' ? (
-              <Badge className="bg-cricket-ball text-white animate-pulse flex items-center gap-1">
-                <span className="h-2 w-2 rounded-full bg-white animate-pulse"></span>
-                LIVE NOW
-              </Badge>
+              <div className="inline-block">
+                <Badge className="bg-cricket-ball text-white animate-pulse flex items-center gap-1 pointer-events-none">
+                  <span className="h-2 w-2 rounded-full bg-white animate-pulse"></span>
+                  LIVE NOW
+                </Badge>
+              </div>
             ) : (
-              <Badge variant="outline" className="text-cricliv-blue border-cricliv-blue">UPCOMING</Badge>
+              <Badge variant="outline" className="text-cricliv-blue border-cricliv-blue pointer-events-none">UPCOMING</Badge>
             )}
           </div>
           

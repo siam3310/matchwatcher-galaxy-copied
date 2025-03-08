@@ -35,17 +35,17 @@ const Index = () => {
   return (
     <MainLayout>
       <div className="space-y-8">
-        <section className="bg-gradient-to-r from-cricliv-blue to-cricliv-blue/70 text-white p-6 md:p-10 rounded-2xl shadow-md mb-8">
+        <section className="bg-gradient-to-r from-cricliv-purple to-cricliv-blue text-white p-6 md:p-10 rounded-2xl shadow-md mb-8">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-8">
             <div className="flex-1">
-              <h1 className="text-3xl md:text-4xl font-bold mb-2">Welcome to CRICLIV</h1>
+              <h1 className="text-3xl md:text-4xl font-bold mb-2">Welcome to <span className="text-cricliv-purple">CRIC</span><span className="text-white">LIV</span></h1>
               <p className="text-lg opacity-90 mb-6">
                 Watch live cricket matches for free. No subscription, no signup required.
                 Just click and enjoy the game!
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link to="/matches">
-                  <Button size="lg" variant="secondary" className="text-cricliv-blue font-medium">
+                  <Button size="lg" variant="secondary" className="text-cricliv-blue font-medium bg-white hover:bg-white/90">
                     Browse Matches
                   </Button>
                 </Link>
@@ -75,7 +75,7 @@ const Index = () => {
           {liveMatches.length > 0 ? (
             <MatchGrid matches={liveMatches} />
           ) : (
-            <div className="bg-white border rounded-lg p-8 text-center">
+            <div className="glass-card p-8 text-center">
               <h3 className="text-xl font-semibold mb-2">No Live Matches Right Now</h3>
               <p className="text-muted-foreground mb-4">Check back later or browse upcoming matches</p>
               <Link to="/matches">
